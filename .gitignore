@@ -180,3 +180,6 @@ temp-*.sql
 
 #.MD
 *.md
+
+# HTTP requests
+*.http
