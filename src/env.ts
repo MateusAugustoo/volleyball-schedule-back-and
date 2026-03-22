@@ -8,6 +8,10 @@ export const envSchema = z.object({
   SMTP_PORT: z.coerce.number(),
   SMTP_USER: z.string(),
   SMTP_PASS: z.string(),
+  METHODS_REQUEST: z.array(z.string()).default(['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']),
+  COOKIE_SECRET: z.string(),
+  JWT_SECRET: z.string(),
+  NODE_ENV: z.enum(['development', 'production']).default('development')
 })
 
 const _env = envSchema.safeParse(process.env);

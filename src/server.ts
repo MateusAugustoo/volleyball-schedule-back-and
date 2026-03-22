@@ -1,6 +1,7 @@
 import { env } from '@/env'
 import fastify from "fastify";
 import { fastifyCors } from '@fastify/cors'
+import { fastifyCookie } from '@fastify/cookie'
 import { fastifySwagger } from '@fastify/swagger'
 import { fastifySwaggerUi } from '@fastify/swagger-ui'
 import {
@@ -11,11 +12,26 @@ import {
 } from 'fastify-type-provider-zod'
 import { routes } from './http/routes';
 import { setupErrorHandler } from './http/error-handler';
+import fastifyJwt from '@fastify/jwt';
 
 const server = fastify({logger: true}).withTypeProvider<ZodTypeProvider>();
 
 server.register(fastifyCors, {
-  origin: env.CORS_ORIGIN_REQUEST
+  origin: env.CORS_ORIGIN_REQUEST,
+  credentials: true,
+  methods: env.METHODS_REQUEST
+})
+
+server.register(fastifyCookie, {
+  secret: env.COOKIE_SECRET,
+})
+
+server.register(fastifyJwt, {
+  secret: env.JWT_SECRET,
+  cookie: {
+    cookieName: 'accessToken',
+    signed: false,
+  },
 })
 
 server.setSerializerCompiler(serializerCompiler)
