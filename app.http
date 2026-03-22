@@ -1,0 +1,25 @@
+
+GET http://localhost:3333/
+
+###
+
+// Documentation
+GET http://localhost:3333/docs
+
+###
+
+// Register user
+POST http://localhost:3333/api/register
+Content-Type: application/json
+
+{
+  "name": "[Username]",
+  "email": "[EMAIL_ADDRESS]",
+  "password": "[PASSWORD]",
+  "confirmPassword": "[PASSWORD]"
+}
+
+###
+
+// Verify email
+GET http://localhost:3333/api/auth/verify-email?token=1abf1145-42e2-4809-93ac-9bd95761a388
