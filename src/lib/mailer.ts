@@ -16,7 +16,7 @@ type SendVerificationEmail = {
 }
 
 export async function sendVerificationEmail({ to, token }: SendVerificationEmail) {
-  const verificationUrl = `http://localhost:${env.PORT}/auth/verify-email?token=${token}`
+  const verificationUrl = `http://localhost:${env.PORT}/api/auth/verify-email?token=${token}`
 
   await transporter.sendMail({
     from: `"Volleyball Schedule" <${env.SMTP_USER}>`,

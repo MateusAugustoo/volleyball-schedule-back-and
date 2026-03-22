@@ -11,7 +11,7 @@ import { sendVerificationEmail } from "@/lib/mailer";
 
 export const registerUserRoute: FastifyPluginAsyncZod = async (server) => {
   server.post(
-    '/api/register',
+    '/api/auth/register',
     {
       schema: {
         tags: ['auth'],
@@ -34,17 +34,13 @@ export const registerUserRoute: FastifyPluginAsyncZod = async (server) => {
     },
     async (request, reply) => {
       const id = nanoid()
-      const { name, email, password, confirmPassword } = request.body
+      const { name, email, password } = request.body
       const { hash } = await hashPassword(password)
 
       const userExists = await verifyExitUser(email)
 
       if (userExists) {
         return reply.code(409).send({ error: 'User already exists' })
-      }
-
-      if (password !== confirmPassword) {
-        return reply.code(400).send({ error: 'Passwords do not match' })
       }
 
       try {
