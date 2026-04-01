@@ -1,7 +1,7 @@
 import { type FastifyInstance } from "fastify";
 import { registerUserRoute } from "./auth/register_route";
 import { verifyEmailRoute } from "./auth/verify_email";
-import { loginUserRoute } from "./auth/login_router";
+import { loginUserRoute } from "./auth/login_route";
 
 export const routes = async (server: FastifyInstance) => {
   server.register(loginUserRoute)
