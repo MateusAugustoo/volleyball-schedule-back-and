@@ -31,7 +31,7 @@ describe('Auth Routes - Verify Email', () => {
 
     const response = await supertest(server.server)
       .get('/api/auth/verify-email')
-      .query({ token: 'valid_token_xyz' }) // simulando URL /api/auth/verify-email?token=valid_token_xyz
+      .query({ token: 'valid_token_xyz' })
 
     expect(response.status).toBe(200)
     expect(response.body).toEqual({ message: 'Email verified successfully' })
