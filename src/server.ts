@@ -76,3 +76,5 @@ const start = async () => {
 }
 
 start();
+
+export { server }

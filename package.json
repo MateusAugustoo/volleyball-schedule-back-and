@@ -12,14 +12,17 @@
     "build:watch": "tsc --watch",
     "clean": "rimraf dist",
     "typecheck": "tsc --noEmit",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest"
   },
   "devDependencies": {
     "@types/node": "^25.5.0",
     "@types/nodemailer": "^7.0.11",
+    "@types/supertest": "^7.2.0",
     "drizzle-kit": "^0.31.10",
+    "supertest": "^7.2.2",
     "ts-node": "^10.9.2",
-    "tsx": "^4.21.0"
+    "tsx": "^4.21.0",
+    "vitest": "^4.1.2"
   },
   "dependencies": {
     "@fastify/cookie": "^11.0.2",

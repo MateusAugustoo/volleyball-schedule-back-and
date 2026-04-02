@@ -11,7 +11,7 @@ export const envSchema = z.object({
   METHODS_REQUEST: z.array(z.string()).default(['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']),
   COOKIE_SECRET: z.string(),
   JWT_SECRET: z.string(),
-  NODE_ENV: z.enum(['development', 'production']).default('development')
+  NODE_ENV: z.enum(['development', 'production', 'test']).default('development')
 })
 
 const _env = envSchema.safeParse(process.env);
