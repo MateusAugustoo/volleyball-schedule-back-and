@@ -44,7 +44,7 @@ export const registerUserRoute: FastifyPluginAsyncZod = async (server) => {
       }
 
       try {
-        const userId = await insertUser({ id, name, email, pass: hash })
+        const userId = await insertUser({ id, name, email, passHash: hash })
 
         if (!userId) {
           return reply.code(500).send({ error: 'Internal server error' })
